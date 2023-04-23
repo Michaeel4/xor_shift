@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>XOR-Encryption Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>XOR Encryption Demo</h1>
+    <form>
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message">
+        <br>
+        <label for="key">Key:</label>
+        <input type="text" id="key" name="key">
+        <br>
+        <button type="button" onclick="encrypt()">Encrypt</button>
+    </form>
+    <p id="lastMessage">Last Message: </p>
+
+    <p id="lastKey">Last Key: </p>
+
+    <p id="encryptedMessage">Encrypted Message (Hexadecimal): </p>
+    <p id="encryptedMessageASCII">Encrypted Message (ASCII): </p>
+
+
+<table>
+    <tr>
+      <th>Binary Message:</th>
+      <td id="binaryMessage"></td>
+    </tr>
+    <tr>
+      <th>Binary Key:</th>
+      <td id="binaryKey"></td>
+    </tr>
+    <tr>
+      <th>Binary Result:</th>
+      <td id="binaryResult"></td>
+    </tr>
+  </table>
+
+
+
+  <h2>Hack it</h2>
+
+  <h3>Via Hamming Distance</h3>
+
+  <h3>Via </h3>
+  <form>
+    <label for="message">Message to hack:</label>
+    <input type="text" id="messageHack" name="messageHack">
+    <br>
+   
+    <button type="button" onclick="crackXor()">Hack it</button>
+</form>
+<p id="decryptedMessage">Hacked Message: </p>
+
+  
+    <script src="main.js"></script>
+</body>
+</html>
