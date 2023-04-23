@@ -22,35 +22,46 @@ function xorEncrypt(message, key) {
 
   return encryptedMessage;
 }
-
 function encrypt() {
-  console.log("called encrypt");
-  const messageElement = document.getElementById("message");
-  const keyElement = document.getElementById("key");
-  const encryptedMessageElement = document.getElementById("encryptedMessage");
-
-  const lastMessage = document.getElementById("lastMessage");
-  const lastKey = document.getElementById("lastKey");
-  const message = messageElement.value;
-  const key = keyElement.value;
-  if (message && key) {
-    const encryptedMessage = xorEncrypt(message, key);
-    const encryptedHex = encryptedMessage.split("").map(char => char.charCodeAt(0).toString(16)).join(" ");
-    const encryptedASCII = encryptedMessage.split("").map(char => String.fromCharCode(char.charCodeAt(0))).join("");
-
-    encryptedMessageElement.textContent = "Encrypted Message (Hexadecimal): " + encryptedHex;
-    encryptedMessageASCII.textContent = "Encrypted Message (ASCII): " + encryptedASCII;
-
-  } else {
-    encryptedMessageElement.textContent = "Encrypted Message: No valid key available";
+    console.log("called encrypt");
+    const messageElement = document.getElementById("message");
+    const keyElement = document.getElementById("key");
+    const encryptedMessageElement = document.getElementById("encryptedMessage");
+  
+    const lastMessage = document.getElementById("lastMessage");
+    const lastKey = document.getElementById("lastKey");
+    const binaryMessageElement = document.getElementById("binaryMessage");
+    const binaryKeyElement = document.getElementById("binaryKey");
+    const binaryResultElement = document.getElementById("binaryResult");
+    const message = messageElement.value;
+    const key = keyElement.value;
+    if (message && key) {
+      const encryptedMessage = xorEncrypt(message, key);
+      const encryptedHex = encryptedMessage.split("").map(char => char.charCodeAt(0).toString(16)).join(" ");
+      const encryptedASCII = encryptedMessage.split("").map(char => String.fromCharCode(char.charCodeAt(0))).join("");
+  
+      encryptedMessageElement.textContent = "Encrypted Message (Hexadecimal): " + encryptedHex;
+      encryptedMessageASCII.textContent = "Encrypted Message (ASCII): " + encryptedASCII;
+  
+      const binaryMessage = message.split("").map(char => char.charCodeAt(0).toString(2)).join(" ");
+      const binaryKey = key.split("").map(char => char.charCodeAt(0).toString(2)).join(" ");
+      const binaryResult = encryptedMessage.split("").map(char => char.charCodeAt(0).toString(2)).join(" ");
+  
+      binaryMessageElement.textContent = binaryMessage;
+      binaryKeyElement.textContent = binaryKey;
+      binaryResultElement.textContent = binaryResult;
+  
+    } else {
+      encryptedMessageElement.textContent = "Encrypted Message: No valid key available";
+    }
+  
+    lastMessage.textContent = "Last Message: " + messageElement.value;
+    lastKey.textContent = "Last Key: " + keyElement.value;
+  
+    messageElement.value = "";
+    keyElement.value = "";
   }
-
-  lastMessage.textContent = "Last Message: " + messageElement.value;
-  lastKey.textContent = "Last Key: " + keyElement.value;
-
-  messageElement.value = "";
-  keyElement.value = "";
-}
+  
 function shiftXOR(ciphertext, shift) {
     let coincidences = 0;
   
